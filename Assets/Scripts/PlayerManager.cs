@@ -23,12 +23,17 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         // Gets offset from current position of the camera
+        
         offset = transform.position - player.transform.position;
     }
 
     void Update()
     {
         // Camera follows player
-        transform.position = player.transform.position + offset;
+        if (!Input.GetButton("Fire2"))
+        { 
+            transform.position = player.transform.position + offset; 
+        }
+            
     }
 }

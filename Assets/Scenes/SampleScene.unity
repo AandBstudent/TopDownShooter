@@ -2868,6 +2868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 10
   health: 100
+  target: {fileID: 3355800406648368486}
   _animator: {fileID: 582893786}
 --- !u!136 &582893783
 CapsuleCollider:
@@ -3469,11 +3470,11 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7024297, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -3513,7 +3514,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -3532,7 +3533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 7.25, y: 8.89, z: -14.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4024,11 +4025,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0.1, y: 0.25, z: 0.3}
-  ShoulderOffset: {x: 0.6, y: 1.25, z: 0}
-  VerticalArmLength: 0
-  CameraSide: 0.85
-  CameraDistance: 2
+  Damping: {x: 0.1, y: 0.5, z: 0.3}
+  ShoulderOffset: {x: 0.6, y: 0.9, z: 0}
+  VerticalArmLength: 0.4
+  CameraSide: 1
+  CameraDistance: 3
   CameraCollisionFilter:
     serializedVersion: 2
     m_Bits: 0
@@ -4666,7 +4667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.42000005, y: 1.35, z: -2}
+  m_LocalPosition: {x: 0.6, y: 1.4, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6051,6 +6052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 10
   health: 100
+  target: {fileID: 3355800406648368486}
   _animator: {fileID: 1301078250}
 --- !u!136 &1301078247
 CapsuleCollider:
@@ -6174,6 +6176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 10
   health: 100
+  target: {fileID: 3355800406648368486}
   _animator: {fileID: 1304149774}
 --- !u!136 &1304149771
 CapsuleCollider:
@@ -6747,14 +6750,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434885129}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.42000005, y: 1.35, z: -2}
+  m_LocalRotation: {x: 0.2840153, y: 0, z: 0, w: 0.95881975}
+  m_LocalPosition: {x: 0.6, y: 1.4, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 780337922}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 33, y: 0, z: 0}
 --- !u!114 &1434885132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10373,6 +10376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookRadius: 10
   health: 100
+  target: {fileID: 3355800406648368486}
   _animator: {fileID: 8743579840099183104}
 --- !u!1 &2715888180871984852
 GameObject:

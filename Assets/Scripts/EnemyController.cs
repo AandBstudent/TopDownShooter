@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public float lookRadius = 10f;
+    public float lookRadius;
 
     public float health = 100f;
 
-    Transform target;
+    public Transform target;
     NavMeshAgent agent;
     public Animator _animator;
 
@@ -26,7 +26,6 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -34,21 +33,29 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(target.position, transform.position);
-        Vector3 destination = agent.destination;
- 
-        if(distance <= lookRadius)
+        //Vector3 destination = agent.destination;
+
+        // Check for player
+        if (distance <= lookRadius)
         {
             Debug.Log("Player Detected");
+            // Walking animation
             _animator.SetBool("isLook", true);
+            // Move towards where player was detected
             agent.SetDestination(target.position);
-            destination = agent.destination;
+            Debug.Log(target.position);
+            // Get and hold the destination for AI 
+            //destination = agent.nextPosition;
         }
+        //else agent.SetDestination(agent.nextPosition);
         
         // Go back to being idle
-        if(Vector3.Distance( destination, transform.position) <= 2)
+       /* if(agent.velocity == Vector3.zero)
         {
+            Debug.Log("Player Got Away");
             _animator.SetBool("isLook", false);
-        }
+            //agent.SetDestination(destination);
+        }*/
     }
 
     void Die()

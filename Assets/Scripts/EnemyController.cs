@@ -33,7 +33,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(target.position, transform.position);
-        //Vector3 destination = agent.destination;
+        Vector3 destination = target.position;
 
         // Check for player
         if (distance <= lookRadius)
@@ -45,17 +45,17 @@ public class EnemyController : MonoBehaviour
             agent.SetDestination(target.position);
             Debug.Log(target.position);
             // Get and hold the destination for AI 
-            //destination = agent.nextPosition;
+            destination = agent.destination;
         }
         //else agent.SetDestination(agent.nextPosition);
         
         // Go back to being idle
-       /* if(agent.velocity == Vector3.zero)
+        if(Vector3.Distance(destination, transform.position) <= 0)
         {
             Debug.Log("Player Got Away");
             _animator.SetBool("isLook", false);
             //agent.SetDestination(destination);
-        }*/
+        }
     }
 
     void Die()

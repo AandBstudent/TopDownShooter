@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip shootSound;
     private AudioSource source;
     private float volLowRange = .45f;
-    private float volHighRange = .60f;
+    private float volHighRange = .55f;
 
     Animator _animator;
 

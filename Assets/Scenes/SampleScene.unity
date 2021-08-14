@@ -3987,7 +3987,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18828
+  m_Name: pb_Mesh18830
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5432,7 +5432,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 5, z: 2}
+  m_Size: {x: 30, y: 0.7, z: 2}
   m_Center: {x: 15, y: 2.5, z: -0.5}
 --- !u!1 &1053321332
 GameObject:
@@ -8061,17 +8061,9 @@ MonoBehaviour:
   assetGuid: 
   m_Mesh: {fileID: 774260170}
   m_IsSelectable: 1
-  m_SelectedFaces: 02000000
-  m_SelectedEdges:
-  - a: 8
-    b: 9
-  - a: 10
-    b: 8
-  - a: 9
-    b: 11
-  - a: 11
-    b: 10
-  m_SelectedVertices: 08000000090000000a0000000b000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!4 &1753602919
 Transform:
   m_ObjectHideFlags: 0
@@ -8908,7 +8900,7 @@ Transform:
   m_GameObject: {fileID: 2043202115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -8924,7 +8916,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 2.220446e-16, z: 100}
+  m_Size: {x: 100, y: 1, z: 100}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2045791192
 GameObject:
@@ -9412,7 +9404,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18522
+  m_Name: pb_Mesh18524
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10450,9 +10442,10 @@ MonoBehaviour:
   _speed: 1.5
   controller: {fileID: 2727459660273776607}
   firePoint: {fileID: 1714547439}
+  mouseTarget: {fileID: 795070719}
   bulletPrefab: {fileID: 3246930559242820617, guid: 617a945c02ff096498a8568f3a1bbfa5,
     type: 3}
-  bulletForce: 50
+  bulletForce: 100
 --- !u!114 &2727459660273776606
 MonoBehaviour:
   m_ObjectHideFlags: 0

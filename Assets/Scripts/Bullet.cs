@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public GameObject hiteffect;
     public float damage = 25f;
 
+
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.collider.name);
@@ -20,4 +21,5 @@ public class Bullet : MonoBehaviour
         Destroy(effect, 5f);
         Destroy(gameObject);
     }
+
 }

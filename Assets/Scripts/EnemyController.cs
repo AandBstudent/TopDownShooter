@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
             _animator.SetBool("isLook", true);
             // Move towards where player was detected
             agent.SetDestination(target.position);
-            Debug.Log(target.position);
+            //Debug.Log(target.position);
             // Get and hold the destination for AI 
         }
         //else agent.SetDestination(agent.nextPosition);
@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
         // Go back to being idle
         if(Vector3.Distance(destination, transform.position) <= 3)
         {
-            Debug.Log("transform position: " + transform.position);
+            //Debug.Log("transform position: " + transform.position);
             _animator.SetBool("isLook", false);
             //agent.SetDestination(destination);
         }

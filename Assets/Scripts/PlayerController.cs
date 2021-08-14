@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
             //transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
             controller.Move(movement * _speed * Time.deltaTime);
+            FaceTarget();
         }
 
         // Shooting
@@ -69,12 +70,16 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
+        // Shooting animation
         _animator.SetBool("isShoot", true);
 
+        // Creates bullet
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        // Store bullet object
+       Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
+        // Move bullet that was created
         rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
     }
 }

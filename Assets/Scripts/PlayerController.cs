@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     Animator _animator;
 
     public Transform firePoint;
+    public Transform mouseTarget;
     public GameObject bulletPrefab;
 
     public float bulletForce = 20f;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        FaceTarget();
         _animator.SetBool("isShoot", false);
         // Reading the Input
         float horizontal = Input.GetAxis("Horizontal");
@@ -28,9 +30,12 @@ public class PlayerController : MonoBehaviour
         /* Convert input into vector */
         Vector3 movement = new Vector3(horizontal, 0f, vertical).normalized;
 
+        
+
         // Moving
         if (movement.magnitude > 0)
         {
+
             float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
 
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
@@ -41,6 +46,7 @@ public class PlayerController : MonoBehaviour
         // Shooting
         if (Input.GetButtonDown("Fire1"))
         {
+            FaceTarget();
             Shoot();
         }
 
@@ -52,6 +58,13 @@ public class PlayerController : MonoBehaviour
         /* 3rd and 4th argument of SetFloat() allow animations to transition smoothly */
         _animator.SetFloat("VelocityZ", velocityZ, 0.1f, Time.deltaTime);
         _animator.SetFloat("VelocityX", velocityX, 0.1f, Time.deltaTime);
+    }
+
+    void FaceTarget()
+    {
+        Vector3 direction = (mouseTarget.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
     void Shoot()

@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour
         // Moving
         if (movement.magnitude > 0)
         {
+            FaceTarget();
+           // float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
 
-            float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            //transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
             controller.Move(movement * _speed * Time.deltaTime);
         }

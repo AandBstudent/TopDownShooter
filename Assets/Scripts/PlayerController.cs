@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
 
     public float bulletForce = 20f;
+    public float fireRate = 3f;
+
+    private double lastShot = 0;
 
     void Awake() => _animator = GetComponent<Animator>();
 
@@ -22,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         FaceTarget();
-        _animator.SetBool("isShoot", false);
+        
         // Reading the Input
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -41,7 +44,6 @@ public class PlayerController : MonoBehaviour
             //transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
 
             controller.Move(movement * _speed * Time.deltaTime);
-            FaceTarget();
         }
 
         // Shooting
@@ -68,18 +70,30 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
+    void LateUpdate()
+    {
+        // Cancel Shooting Animation
+        _animator.SetBool("isShoot", false);
+    }
+
     void Shoot()
     {
-        // Shooting animation
-        _animator.SetBool("isShoot", true);
+        if(Time.time > fireRate + lastShot)
+        {
+            // Shooting animation
+            _animator.SetBool("isShoot", true);
 
-        // Creates bullet
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            // Creates bullet
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        // Store bullet object
-       Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            // Store bullet object
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
-        // Move bullet that was created
-        rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+            // Move bullet that was created
+            rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+
+            lastShot = Time.time;
+        }
+       
     }
 }

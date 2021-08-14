@@ -4204,8 +4204,8 @@ MonoBehaviour:
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneWidth: 1.05
+  m_SoftZoneHeight: 1.06
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -6279,7 +6279,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 0.3
+  m_Speed: 0.2
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120

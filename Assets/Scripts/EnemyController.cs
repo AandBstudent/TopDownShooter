@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
         // Check for player
         if (distance <= lookRadius)
         {
-            Debug.Log("Player Detected");
+            //Debug.Log("Player Detected");
             // Walking animation
             _animator.SetBool("isLook", true);
             // Move towards where player was detected

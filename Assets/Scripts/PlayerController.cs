@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour
 
     public CharacterController controller;
 
+    // Gun Sounds
+    public AudioClip shootSound;
+    private AudioSource source;
+    private float volLowRange = .45f;
+    private float volHighRange = .60f;
+
     Animator _animator;
 
     public Transform firePoint;
@@ -19,7 +25,12 @@ public class PlayerController : MonoBehaviour
 
     private double lastShot = 0;
 
-    void Awake() => _animator = GetComponent<Animator>();
+    void Awake()
+    {
+        // Gun Sounds
+        source = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -80,6 +91,11 @@ public class PlayerController : MonoBehaviour
     {
         if(Time.time > fireRate + lastShot)
         {
+            // Gun Sound Pitch
+            source.pitch = Random.Range(volLowRange, volHighRange);
+            // Play Gun Sounds
+            source.PlayOneShot(shootSound, 1F);
+
             // Shooting animation
             _animator.SetBool("isShoot", true);
 

@@ -133,8 +133,8 @@ public class PlayerController : MonoBehaviour
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
             // Move bullet that was created
-            rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
-
+            //rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
+            rb.MovePosition(mouseTarget.position);
             // Save last time player shot
             lastShot = Time.time;
         }

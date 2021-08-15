@@ -19,6 +19,9 @@ public class Bullet : MonoBehaviour
             enemy.TakeDamage(damage);
             enemy._animator.SetBool("isLook", false);
             enemy._animator.SetBool("isShot", true);
+            
+            enemy.agent.isStopped = true;
+            enemy.lastHit = Time.time;
             // Stops enemy from moving
 
             GameObject effect = Instantiate(hiteffectEnemy, transform.position, Quaternion.identity);

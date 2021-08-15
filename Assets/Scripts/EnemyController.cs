@@ -10,8 +10,11 @@ public class EnemyController : MonoBehaviour
     public float health = 100f;
 
     public Transform target;
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     public Animator _animator;
+
+    private double hitTime = 0.8f;
+    public double lastHit = 0;
 
     public void TakeDamage(float damage)
     {
@@ -38,27 +41,40 @@ public class EnemyController : MonoBehaviour
         // Check for player
         if (distance <= lookRadius)
         {
-            //Debug.Log("Player Detected");
-            // Walking animation
-            _animator.SetBool("isLook", true);
-            // Move towards where player was detected
-            agent.SetDestination(target.position);
+            if(agent.isStopped != true)
+            {
+                //Debug.Log("Player Detected");
+                // Walking animation
+                _animator.SetBool("isLook", true);
+                // Move towards where player was detected
+                agent.SetDestination(target.position);
 
-            //Debug.Log(target.position);
-            // Get and hold the destination for AI 
-        }
+                //Debug.Log(target.position);
+                // Get and hold the destination for AI 
+            }
+
+            if(Time.time > lastHit + hitTime)
+            {
+                agent.isStopped = false;
+            }
                 
+        }
+
         // Go back to being idle
-        if(Vector3.Distance(destination, transform.position) <= 3)
+        if (Vector3.Distance(destination, transform.position) <= 2)
         {
             //Debug.Log("transform position: " + transform.position);
             _animator.SetBool("isLook", false);
+            
             //agent.SetDestination(destination);
         }
+
+        //Debug.Log("Time: " + Time.time);
+       // _animator.SetBool("isShot", false);
     }
 
     void LateUpdate()
-    {       
+    {
         _animator.SetBool("isShot", false);
     }
 

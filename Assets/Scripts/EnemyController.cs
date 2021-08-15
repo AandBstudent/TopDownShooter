@@ -43,11 +43,11 @@ public class EnemyController : MonoBehaviour
             _animator.SetBool("isLook", true);
             // Move towards where player was detected
             agent.SetDestination(target.position);
+
             //Debug.Log(target.position);
             // Get and hold the destination for AI 
         }
-        //else agent.SetDestination(agent.nextPosition);
-        
+                
         // Go back to being idle
         if(Vector3.Distance(destination, transform.position) <= 3)
         {
@@ -57,9 +57,17 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    void LateUpdate()
+    {       
+        _animator.SetBool("isShot", false);
+    }
+
     void Die()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        _animator.SetBool("isDead", true);
+        lookRadius = 0;
+        agent.destination = transform.position;
     }
 
     void OnDrawGizmosSelected()

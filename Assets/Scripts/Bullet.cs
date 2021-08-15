@@ -17,6 +17,10 @@ public class Bullet : MonoBehaviour
         if(enemy != null)
         {
             enemy.TakeDamage(damage);
+            enemy._animator.SetBool("isLook", false);
+            enemy._animator.SetBool("isShot", true);
+            // Stops enemy from moving
+
             GameObject effect = Instantiate(hiteffectEnemy, transform.position, Quaternion.identity);
             Destroy(effect, 5f);
             Destroy(gameObject);

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     public Transform mouseTarget;
     public GameObject bulletPrefab;
+    public GameObject muzzleFlash;
 
     public float bulletForce = 20f;
     public float fireRate = 3f;
@@ -113,6 +114,11 @@ public class PlayerController : MonoBehaviour
         {
             // Gun Sound Pitch
             source.pitch = Random.Range(volLowRange, volHighRange);
+       
+            //Muzzle Flash
+            GameObject effect = Instantiate(muzzleFlash, firePoint.position, Quaternion.identity);
+            Destroy(effect, .1f);
+
             // Play Gun Sounds
             source.PlayOneShot(shootSound, 1F);
 

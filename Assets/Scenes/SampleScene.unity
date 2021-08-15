@@ -7895,7 +7895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714547438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.136, y: 1.947, z: 1.355}
+  m_LocalPosition: {x: 0.208, y: 1.947, z: 1.424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3355800406648368486}
@@ -9855,6 +9855,7 @@ MonoBehaviour:
   mouseTarget: {fileID: 795070719}
   bulletPrefab: {fileID: 3246930559242820617, guid: 617a945c02ff096498a8568f3a1bbfa5,
     type: 3}
+  muzzleFlash: {fileID: 100000, guid: 8eaaa4f553116f44b8459bc24201c514, type: 3}
   bulletForce: 100
   fireRate: 0.3
 --- !u!114 &2727459660273776606

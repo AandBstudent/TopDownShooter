@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             FaceTarget();
             Shoot();
-        }
+        } else _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
 
         // Animating
         float velocityZ = Vector3.Dot(movement.normalized, transform.forward);
@@ -76,15 +76,20 @@ public class PlayerController : MonoBehaviour
 
     void FaceTarget()
     {
+        // Get direction of target
         Vector3 direction = (mouseTarget.position - transform.position).normalized;
+
+        // Setup rotation in order to face target
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+
+        // Rotate towards target
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
     void LateUpdate()
     {
         // Cancel Shooting Animation
-        _animator.SetBool("isShoot", false);
+       // _animator.SetBool("isShoot", false);
     }
 
     void Shoot()
@@ -97,7 +102,8 @@ public class PlayerController : MonoBehaviour
             source.PlayOneShot(shootSound, 1F);
 
             // Shooting animation
-            _animator.SetBool("isShoot", true);
+            _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 100f, Time.deltaTime * 100f));
+           // _animator.SetBool("isShoot", true);
 
             // Creates bullet
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -108,6 +114,7 @@ public class PlayerController : MonoBehaviour
             // Move bullet that was created
             rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
 
+            // Save last time player shot
             lastShot = Time.time;
         }
        

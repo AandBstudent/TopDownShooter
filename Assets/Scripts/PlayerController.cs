@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private float volHighRange = .55f;
 
     Animator _animator;
+    float velocityZ;
+    float velocityX;
 
     public Transform firePoint;
     public Transform mouseTarget;
@@ -44,8 +46,6 @@ public class PlayerController : MonoBehaviour
         /* Convert input into vector */
         Vector3 movement = new Vector3(horizontal, 0f, vertical).normalized;
 
-        
-
         // Moving
         if (movement.magnitude > 0)
         {
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             FaceTarget();
             Shoot();
-        } else _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f));
+        } else _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0f, Time.deltaTime * 10f)); // Go back to idle
 
         // Animating
         float velocityZ = Vector3.Dot(movement.normalized, transform.forward);
@@ -84,6 +84,21 @@ public class PlayerController : MonoBehaviour
 
         // Rotate towards target
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+
+        //Debug
+        //Debug.Log("Angle Rotation: " + Quaternion.Angle(transform.rotation, lookRotation));
+
+        // Check the angle between the player direction and lookRotation(mouse position)
+        float angleDiff = Quaternion.Angle(transform.rotation, lookRotation);
+
+        // Check the speed of the player to determine if the players feet should move
+        if (velocityX == 0 && velocityZ == 0 && angleDiff >= 10)
+        {
+            float velocityZ = 1;
+            float velocityX = 1;
+            _animator.SetFloat("VelocityZ", velocityZ, 0.1f, Time.deltaTime);
+            _animator.SetFloat("VelocityX", velocityX, 0.1f, Time.deltaTime);
+        }
     }
 
     void LateUpdate()

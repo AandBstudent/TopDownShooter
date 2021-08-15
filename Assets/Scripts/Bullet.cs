@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject hiteffect;
-    public float damage = 25f;
+    public GameObject hiteffectWall;
+    public GameObject hiteffectEnemy; 
+    float damage = 25f;
     
 
     void OnCollisionEnter(Collision collision)
@@ -16,10 +17,17 @@ public class Bullet : MonoBehaviour
         if(enemy != null)
         {
             enemy.TakeDamage(damage);
+            GameObject effect = Instantiate(hiteffectEnemy, transform.position, Quaternion.identity);
+            Destroy(effect, 5f);
+            Destroy(gameObject);
         }
-        GameObject effect = Instantiate(hiteffect, transform.position, Quaternion.identity);
-        Destroy(effect, 5f);
-        Destroy(gameObject);
+        else
+        {
+            GameObject effect = Instantiate(hiteffectWall, transform.position, Quaternion.identity);
+            Destroy(effect, 5f);
+            Destroy(gameObject);
+        }
+        
     }
 
 }

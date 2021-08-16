@@ -13,6 +13,8 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent agent;
     public Animator _animator;
 
+    Collider collision;
+
     private double hitTime = 0.8f;
     public double lastHit = 0;
 
@@ -30,6 +32,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        collision = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -80,7 +83,9 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
+
         // Destroy(gameObject);
+        collision.enabled = false;
         _animator.SetBool("isDead", true);
         lookRadius = 0;
         agent.destination = transform.position;

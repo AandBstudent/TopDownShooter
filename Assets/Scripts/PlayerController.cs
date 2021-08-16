@@ -132,9 +132,15 @@ public class PlayerController : MonoBehaviour
             // Store bullet object
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
+            //Vector3 shootOffset = new Vector3(Random.Range(-.75f,.75f), 0f, Random.Range(-.75f,.75f));
+            // Create spread so bullets do not shoot in the same place
+            float spreadSize = 5f;
+            float shotWidth = Random.Range(-.5f, .5f) * spreadSize;
+            float shotHeight = Random.Range(-.5f, .5f) * spreadSize;
+
             // Move bullet that was created
-            //rb.AddForce(firePoint.forward * bulletForce, ForceMode.Impulse);
-            rb.MovePosition(mouseTarget.position);
+            rb.AddForce(firePoint.forward * bulletForce + firePoint.right * shotWidth + firePoint.up * shotHeight, ForceMode.Impulse);
+            //rb.MovePosition(mouseTarget.position + shootOffset * Time.deltaTime * .01f);
             // Save last time player shot
             lastShot = Time.time;
         }

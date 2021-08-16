@@ -6,8 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public GameObject hiteffectWall;
     public GameObject hiteffectEnemy; 
-    float damage = 25f;
-    
+    float damage = 25f;    
 
     void OnCollisionEnter(Collision collision)
     {
